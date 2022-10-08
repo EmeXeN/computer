@@ -1,1 +1,18 @@
-@use 'normalize'
+@use 'normalize';
+@use './styles/Login';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+:root {
+  --blue: #0A2342;
+  --red: #f52f57;
+  --grey: #788585;
+  --white: #edf2f4;
+  --paleSpringBud: #e4e9b2;
+  --black: #080708;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
