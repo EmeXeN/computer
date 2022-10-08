@@ -8,9 +8,15 @@ const UserProvider = ({children}) => {
     const initialValue = JSON.parse(saved)
     return initialValue || null
   })
+
+  const saveAccountData = (obj) => {
+    setAccountData(obj)
+    localStorage.setItem('account', JSON.stringify(obj))
+  }
+
   const value = {
     accountData,
-    setAccountData
+    saveAccountData
   }
   return (
     <UserContext.Provider value={value}>{children}</UserContext.Provider>
