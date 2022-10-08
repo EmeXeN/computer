@@ -1,10 +1,10 @@
 import './App.scss';
-import Login from './components/Login' 
+import LoginWindow from './components/LoginWindow' 
 
 function App() {
   return ( 
     <div className='App' >
-      <Login />
+      <LoginWindow />
     </div>
   );
 }

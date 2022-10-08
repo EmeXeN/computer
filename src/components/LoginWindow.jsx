@@ -1,4 +1,4 @@
-export default function Login() {
+export default function LoginWindow() {
   return (
     <div className='loginWindow' style={{"backgroundImage": "url(./img/backgrounds/bg1.jpg)"}}>
       <div className='loginWindow__inside'>
