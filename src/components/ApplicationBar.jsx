@@ -1,10 +1,21 @@
+import { useState } from 'react'
+
 export default function ApplicationBar() {
+  const [applicationBarData] = useState(() => {
+    const saved = localStorage.getItem('applicationBar')
+    const initialValue = JSON.parse(saved)
+    return initialValue || ''
+  })
   
   return (
     <div className="applicationBar">
-      <div className="applicationBar_app">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282011%29.png" alt="" />
-      </div>
+      {
+        applicationBarData.sort((a, b) => a.ORDER - b.ORDER).map((app) => (
+          <div className="applicationBar__app" key={app.ORDER}>
+            <img src={app.APP_ICON_DIRECTORY} alt="app bar icon" />
+          </div>
+        ))
+      }
     </div>
   )
 }

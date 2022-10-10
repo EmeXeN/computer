@@ -1,8 +1,14 @@
 import { useContext } from 'react'
+import { BASIC_SETS } from '../config.js'
 import { UserContext } from '../context/UserContext'
 
 export default function RegisterWindow({ setAccountData }) {
   const { saveAccountData } = useContext(UserContext)
+  const setBasicLocalStorageData = () => {
+    if (!localStorage.getItem('applicationBar')) {
+      localStorage.setItem('applicationBar', JSON.stringify(BASIC_SETS.APPLICATION_BAR_ITEMS))
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     const name = e.target[0].value
@@ -15,6 +21,7 @@ export default function RegisterWindow({ setAccountData }) {
       avatarSrc: './img/baseAvatar.png',
     })
     setAccountData(true)
+    setBasicLocalStorageData()
   }
 
   return (

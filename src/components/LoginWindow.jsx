@@ -8,8 +8,11 @@ export default function LoginWindow({ setLoggedIn }) {
     const formLogin = e.target[0].value 
     const formPassword = e.target[1].value
     const { login, password } = accountData
-    if (!login === formLogin || !password === formPassword) return // send notification in future
-    setLoggedIn(true)
+    if (login === formLogin && password === formPassword) {
+      setLoggedIn(true)
+    } else {
+      // send notification in future
+    }
   }
   return (
     <div className='loginWindow' style={{"backgroundImage": "url(./img/backgrounds/bg1.jpg)"}}>
