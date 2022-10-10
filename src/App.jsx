@@ -3,6 +3,7 @@ import { useState } from 'react'
 import LoginWindow from './components/LoginWindow' 
 import UserProvider from './context/UserContext';
 import RegisterWindow from './components/RegisterWindow' 
+import MainWindow from './components/MainWindow';
 
 function App() {
   const [accountData, setAccountData] = useState(() => {
@@ -10,12 +11,17 @@ function App() {
     const initialValue = JSON.parse(saved)
     return initialValue || ''
   })
+  const [loggedIn, setLoggedIn] = useState(false)
   return ( 
     <div className='App' >
       {
-        accountData ? <UserProvider><LoginWindow /></UserProvider> 
-        : 
-        <UserProvider><RegisterWindow setAccountData={setAccountData} /></UserProvider>
+        (accountData && !loggedIn) && <UserProvider><LoginWindow setLoggedIn={setLoggedIn} /></UserProvider> 
+      }
+      {
+        (!accountData && !loggedIn) && <UserProvider><RegisterWindow setAccountData={setAccountData} /></UserProvider>
+      }
+      {
+        loggedIn && <MainWindow />
       }
     </div>
   );
