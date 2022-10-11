@@ -5,7 +5,7 @@ export default function ApplicationBar() {
   const [applicationBarData, setApplicationBarData] = useState(() => {
     const saved = localStorage.getItem('applicationBar')
     const initialValue = JSON.parse(saved)
-    return initialValue || ''
+    return initialValue || []
   })
 
   const handleOnDragEnd = (result) => {
@@ -23,8 +23,8 @@ export default function ApplicationBar() {
         {(provided) => (
           <div className="applicationBar" {...provided.droppableProps} ref={provided.innerRef}>
             {
-              applicationBarData.sort((a, b) => a.ORDER - b.ORDER).map((app, index) => (
-                <Draggable key={app.ORDER} draggableId={app.ORDER.toString()} index={index}>
+              applicationBarData.map((app, index) => (
+                <Draggable key={index} draggableId={index.toString()} index={index}>
                   {(provided) => (
                     <div 
                       className="applicationBar__app" 
