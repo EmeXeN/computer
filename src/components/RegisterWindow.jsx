@@ -8,6 +8,9 @@ export default function RegisterWindow({ setAccountData }) {
     if (!localStorage.getItem('applicationBar')) {
       localStorage.setItem('applicationBar', JSON.stringify(BASIC_SETS.APPLICATION_BAR_ITEMS))
     }
+    if (!localStorage.getItem('desktopApps')) {
+      localStorage.setItem('desktopApps', JSON.stringify(BASIC_SETS.DESKTOP_ITEMS))
+    }
   }
   const handleSubmit = (e) => {
     e.preventDefault()

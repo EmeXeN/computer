@@ -6,6 +6,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .desktop {
@@ -25,6 +27,24 @@
   gap: 8px;
   *:hover {
     cursor: pointer;
+  }
+}
+
+.desktopApps {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 25px;
+  padding: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 50px));
+  grid-template-rows: repeat(auto-fit, minmax(50px, 50px));
+  &__app {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
