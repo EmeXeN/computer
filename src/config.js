@@ -28,5 +28,15 @@ export const BASIC_SETS = {
       APP_NAME: "Chrome",
       APP_ICON_DIRECTORY: "./img/applicationIcons/chrome.png"
     }
+  ],
+  DESKTOP_ITEMS: [
+    {
+      APP_NAME: "Chrome",
+      APP_ICON_DIRECTORY: "./img/applicationIcons/chrome.png"
+    },
+    {
+      APP_NAME: "Mozilla",
+      APP_ICON_DIRECTORY: "./img/applicationIcons/mozilla.png"
+    },
   ]
 }
