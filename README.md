@@ -15,5 +15,4 @@
   * [x] Create context menu
   * [x] Make it possible to pin/unpin desktop app to application bar.
   * [] Create notification system
-  * [] Create context menu
   * [] Create volume component.
