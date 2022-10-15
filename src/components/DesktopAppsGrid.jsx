@@ -8,6 +8,17 @@ export default function DesktopAppsGrid() {
     const initialValue = JSON.parse(saved)
     return initialValue || []
   })
+
+  const pinAppToBar = ({ APP_NAME, APP_ICON_DIRECTORY }) => {
+    let appBarItems = localStorage.getItem('applicationBar')
+    appBarItems = JSON.parse(appBarItems)
+    appBarItems.push({
+      APP_NAME,
+      APP_ICON_DIRECTORY
+    })
+    localStorage.setItem('applicationBar', appBarItems)
+  }
+
   const handleOnDragEnd = (result) => {
     if (!result.destination) return
     const items = Array.from(applications)

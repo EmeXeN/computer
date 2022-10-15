@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 
 export default function ApplicationBar() {
@@ -16,6 +16,12 @@ export default function ApplicationBar() {
     setApplicationBarData(items)
     localStorage.setItem('applicationBar', JSON.stringify(items))
   }
+
+  useEffect(() => {
+    window.addEventListener('storage', () => {
+      
+    })
+  }, [])
   
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
