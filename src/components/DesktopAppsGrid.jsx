@@ -10,7 +10,7 @@ export default function DesktopAppsGrid() {
     return initialValue || []
   })
   const [showContextMenu, setShowContextMenu] = useState(false)
-  const [contextMenuPoints, setContextMenuPoints] = useState({x: 0, y: 0})
+  const [contextMenuEvent, setcontextMenuEvent] = useState()
   const [contextOnClick, setContextOnClick] = useState()
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function DesktopAppsGrid() {
         {(provided) => (
           <div className="desktopApps" {...provided.droppableProps} ref={provided.innerRef}>
             { showContextMenu && 
-              <ContextMenu x={contextMenuPoints.x} y={contextMenuPoints.y}>
+              <ContextMenu e={contextMenuEvent}>
                 <ContextMenuButton onClick={() => pinAppToBar(contextOnClick)}>Pin app to bar</ContextMenuButton>
               </ContextMenu>
             }
@@ -65,7 +65,7 @@ export default function DesktopAppsGrid() {
                         e.preventDefault()
                         setShowContextMenu(true)
                         setContextOnClick(app)
-                        setContextMenuPoints({ x: e.pageX, y: e.pageY })
+                        setcontextMenuEvent(e)
                       }}
                       style={{ ...provided.draggableProps.style, position: 'static' }}
                     >
