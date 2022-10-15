@@ -12,6 +12,7 @@
   * [x] Make it possible to change order of apps in application bar.
   * [x] Create top bar with basic data like current date, keyboard lang etc.
   * [x] Create desktop and make desktop items draggable and possible to change their order.
+  * [] Create context menu
   * [] Make it possible to pin/unpin desktop app to application bar.
   * [] Create volume component.
   * [] Create notification system

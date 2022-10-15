@@ -1,0 +1,26 @@
+.contextMenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(20, 19, 20);
+  min-width: 150px;
+  border-radius: 5px;
+  &__button {
+    width: 100%;
+    background-color: rgb(20, 19, 20);
+    color: var(--white);
+    padding: 5px;
+    border-radius: 5px;
+    button {
+      border-radius: 5px;
+      width: inherit;
+      outline: none;
+      border: none;
+      background-color: inherit;
+      color: inherit;
+      &:hover {
+        background-color: var(--blue);
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import LoginWindow from './components/LoginWindow' 
 import UserProvider from './context/UserContext';
 import RegisterWindow from './components/RegisterWindow' 
@@ -11,6 +11,10 @@ function App() {
     const initialValue = JSON.parse(saved)
     return initialValue || ''
   })
+
+  useEffect(() => {
+    document.addEventListener('contextmenu', (e) => e.preventDefault())
+  }, [])
   const [loggedIn, setLoggedIn] = useState(false)
   return ( 
     <div className='App' >

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import ContextMenu, { ContextMenuButton } from './ContextMenu'
 
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 
@@ -8,6 +9,17 @@ export default function DesktopAppsGrid() {
     const initialValue = JSON.parse(saved)
     return initialValue || []
   })
+  const [showContextMenu, setShowContextMenu] = useState(false)
+  const [contextMenuPoints, setContextMenuPoints] = useState({x: 0, y: 0})
+  const [contextOnClick, setContextOnClick] = useState()
+
+  useEffect(() => {
+    const handleClick = () => {
+      setShowContextMenu(false)
+    }
+    window.addEventListener('click', handleClick)
+    return () => window.removeEventListener('click', handleClick)
+  }, [])
 
   const pinAppToBar = ({ APP_NAME, APP_ICON_DIRECTORY }) => {
     let appBarItems = localStorage.getItem('applicationBar')
@@ -16,7 +28,9 @@ export default function DesktopAppsGrid() {
       APP_NAME,
       APP_ICON_DIRECTORY
     })
+    appBarItems = JSON.stringify(appBarItems)
     localStorage.setItem('applicationBar', appBarItems)
+    window.dispatchEvent(new Event("storage"))
   }
 
   const handleOnDragEnd = (result) => {
@@ -33,6 +47,11 @@ export default function DesktopAppsGrid() {
       <Droppable droppableId="desktopApps" direction='horizontal'>
         {(provided) => (
           <div className="desktopApps" {...provided.droppableProps} ref={provided.innerRef}>
+            { showContextMenu && 
+              <ContextMenu x={contextMenuPoints.x} y={contextMenuPoints.y}>
+                <ContextMenuButton onClick={() => pinAppToBar(contextOnClick)}>Pin app to bar</ContextMenuButton>
+              </ContextMenu>
+            }
             {
               applications.map((app, index) => (
                 <Draggable key={index} draggableId={index.toString()} index={index}>
@@ -42,6 +61,12 @@ export default function DesktopAppsGrid() {
                       {...provided.draggableProps} 
                       {...provided.dragHandleProps} 
                       ref={provided.innerRef}
+                      onContextMenu={(e) => {
+                        e.preventDefault()
+                        setShowContextMenu(true)
+                        setContextOnClick(app)
+                        setContextMenuPoints({ x: e.pageX, y: e.pageY })
+                      }}
                       style={{ ...provided.draggableProps.style, position: 'static' }}
                     >
                       <img src={app.APP_ICON_DIRECTORY} alt="app bar icon" />

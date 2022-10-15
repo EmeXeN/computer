@@ -18,9 +18,13 @@ export default function ApplicationBar() {
   }
 
   useEffect(() => {
-    window.addEventListener('storage', () => {
-      
-    })
+    const handleClick = () => {
+      let appItems = localStorage.getItem('applicationBar')
+      appItems = JSON.parse(appItems)
+      setApplicationBarData(appItems)
+    }
+    window.addEventListener('storage', handleClick)
+    return () => window.removeEventListener('storage', handleClick)
   }, [])
   
   return (
