@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function VolumeControl({ right }) {
+export default function VolumeControl() {
   const [volume, setVolume] = useState(() => {
     const saved = localStorage.getItem('settings')
     const initialValue = JSON.parse(saved).volume
