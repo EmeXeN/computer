@@ -38,5 +38,8 @@ export const BASIC_SETS = {
       APP_NAME: "Mozilla",
       APP_ICON_DIRECTORY: "./img/applicationIcons/mozilla.png"
     },
-  ]
+  ],
+  SETTINGS: {
+    volume: 50,
+  }
 }

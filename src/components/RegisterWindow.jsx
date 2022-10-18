@@ -5,12 +5,9 @@ import { UserContext } from '../context/UserContext'
 export default function RegisterWindow({ setAccountData }) {
   const { saveAccountData } = useContext(UserContext)
   const setBasicLocalStorageData = () => {
-    if (!localStorage.getItem('applicationBar')) {
-      localStorage.setItem('applicationBar', JSON.stringify(BASIC_SETS.APPLICATION_BAR_ITEMS))
-    }
-    if (!localStorage.getItem('desktopApps')) {
-      localStorage.setItem('desktopApps', JSON.stringify(BASIC_SETS.DESKTOP_ITEMS))
-    }
+    localStorage.setItem('applicationBar', JSON.stringify(BASIC_SETS.APPLICATION_BAR_ITEMS))
+    localStorage.setItem('desktopApps', JSON.stringify(BASIC_SETS.DESKTOP_ITEMS))
+    localStorage.setItem('settings', JSON.stringify(BASIC_SETS.SETTINGS))
   }
   const handleSubmit = (e) => {
     e.preventDefault()

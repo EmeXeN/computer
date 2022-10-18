@@ -14,5 +14,5 @@
   * [x] Create desktop and make desktop items draggable and possible to change their order.
   * [x] Create context menu
   * [x] Make it possible to pin/unpin desktop app to application bar.
-  * [] Create notification system
   * [] Create volume component.
+  * [] Create time menu component.
