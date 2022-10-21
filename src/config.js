@@ -41,5 +41,6 @@ export const BASIC_SETS = {
   ],
   SETTINGS: {
     volume: 50,
+    customTime: false,
   }
 }
