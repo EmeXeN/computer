@@ -22,7 +22,9 @@ export default function ApplicationBar() {
 
   const unpinApp = (index) => {
     setApplicationBarData(prev => {
-      delete prev[index]
+      prev = prev.filter((e, idx) => {
+        return idx !== index
+      })
       return prev
     })
     localStorage.setItem('applicationBar', JSON.stringify(applicationBarData))
